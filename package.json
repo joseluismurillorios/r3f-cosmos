@@ -2,7 +2,7 @@
   "name": "josemurillo",
   "private": true,
   "version": "0.0.1",
-  "homepage": "https://joseluismurillorios.github.io/r3f-cosmos/",
+  "homepage": "https://josemurillodev.github.io/r3f-cosmos/",
   "type": "module",
   "scripts": {
     "dev": "vite",
