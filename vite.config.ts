@@ -22,7 +22,7 @@ export default defineConfig({
         description: 'React Three Fiber Cosmos',
         orientation: 'portrait-primary',
         display: 'standalone',
-        start_url: '/?source=pwa',
+        start_url: '/r3f-cosmos/?source=pwa',
         lang: 'en',
         theme_color: '#555555',
         background_color: '#161618',
