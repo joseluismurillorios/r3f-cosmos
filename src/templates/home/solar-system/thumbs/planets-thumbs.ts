@@ -20,6 +20,7 @@ const planetsThumbs = {
   uranus,
   venus,
   sun,
+  test: sun,
 } as const;
 
 export default planetsThumbs;

@@ -9,6 +9,7 @@ import ThreePlanetsNeptune from './planets/three-neptune';
 import ThreePlanetsUranus from './planets/three-uranus';
 import planetsThumbs from './thumbs/planets-thumbs';
 import ThreePlanetsSun from './planets/three-sun';
+import ThreePlanetsTest from './planets/three-test';
 
 export enum PlanetsKeys {
   sun = 'sun',
@@ -21,6 +22,7 @@ export enum PlanetsKeys {
   jupiter = 'jupiter',
   uranus = 'uranus',
   neptune = 'neptune',
+  test = 'test',
 }
 
 export const solarSystem = {
@@ -94,6 +96,13 @@ export const solarSystem = {
     thumb: planetsThumbs.sun,
     atmosphere: false,
   },
+  [PlanetsKeys.test]: {
+    id: PlanetsKeys.test,
+    name: 'Test',
+    Planet: ThreePlanetsTest,
+    thumb: planetsThumbs.test,
+    atmosphere: false,
+  },
 };
 
 export const solarSystemPlanets = [
@@ -107,4 +116,5 @@ export const solarSystemPlanets = [
   solarSystem[PlanetsKeys.jupiter],
   solarSystem[PlanetsKeys.uranus],
   solarSystem[PlanetsKeys.neptune],
+  solarSystem[PlanetsKeys.test],
 ];
