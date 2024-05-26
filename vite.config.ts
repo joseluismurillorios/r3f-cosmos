@@ -7,7 +7,7 @@ import path from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/r3f-cosmos',
+  base: '/r3f-cosmos/',
   build: {
     outDir: './www'
   },
@@ -17,9 +17,9 @@ export default defineConfig({
     VitePWA({
       includeAssets: ['favicon.svg', 'favicon.ico', 'robots.txt', 'apple-touch-icon.png'],
       manifest: {
-        name: 'Jose Murillo',
-        short_name: 'Jose Murillo',
-        description: 'Jose Murillo Developer Site',
+        name: 'R3F Cosmos',
+        short_name: 'R3F Cosmos',
+        description: 'React Three Fiber Cosmos',
         orientation: 'portrait-primary',
         display: 'standalone',
         start_url: '/?source=pwa',
