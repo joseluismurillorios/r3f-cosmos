@@ -6,6 +6,7 @@ import { Switch, Route } from 'wouter';
 import { Color } from 'three';
 import { folder, useControls } from 'leva';
 import { StoreType } from 'leva/dist/declarations/src/types';
+import { useHref } from 'react-router-dom';
 
 import ThreePlanetsMoon from '@/templates/home/solar-system/planets/three-moon';
 import { solarSystemPlanets } from '@/templates/home/solar-system';
@@ -19,8 +20,11 @@ interface PlanetsProps {
   animate?: boolean;
 }
 
+const base = import.meta.env.BASE_URL.replaceAll('/', '');
+
 export default function Planets({ transition, store, animate }: PlanetsProps) {
   const postRef = useRef<any>();
+  const href = useHref(`../${base}`);
   // const store = useRef(useCreateStore()).current;
   const [postActive, setPostActive] = useState(true);
   const animateRef = useRef(animate);
@@ -80,12 +84,12 @@ export default function Planets({ transition, store, animate }: PlanetsProps) {
       {transition(({ opacity, ...props }, location) => (
         <a.group {...props}>
           <Switch location={location}>
-            <Route path="/">
+            <Route path={href}>
               <ThreePlanetsAtm store={store} color={mainColor} />
               <ThreePlanetsMoon />
             </Route>
             {solarSystemPlanets.map(({ id, Planet, atmosphere }) => (
-              <Route key={id} path={`/${id}`}>
+              <Route key={id} path={`${href}/${id}`}>
                 {atmosphere && <ThreePlanetsAtm store={store} color={mainColor} />}
                 <Planet store={store} onUpdate={delayedRender} />
               </Route>

@@ -23,10 +23,20 @@ export type AppRoute = AppRouteItem & {
   // items?: AppRoute[];
 };
 
+const base = import.meta.env.BASE_URL;
+
 export const ROUTES: AppRouteItem[] = [
   {
-    url: '/home',
+    url: '/',
     path: '/*',
+    name: 'Home',
+    key: RouteKeys.Home,
+    items: [],
+    visible: true,
+  },
+  {
+    url: base,
+    path: `${base}*`,
     name: 'Home',
     key: RouteKeys.Home,
     items: [],
