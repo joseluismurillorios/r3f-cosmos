@@ -16,6 +16,7 @@ void main() {
     float factor = pow(dotP, atmPowFactor) * atmMultiplier;
     // Adding in a bit of dotP to the color to make it whiter while the color intensifies
     vec3 atmColor = vec3(r + dotP/4.5, g + dotP/4.5, b + dotP/4.5);
+		float opacity = (atmColor.r * atmColor.g * atmColor.b);
     // use atmOpacity to control the overall intensity of the atmospheric color
-    gl_FragColor = vec4(atmColor, atmOpacity) * factor;
+    gl_FragColor = vec4(atmColor, atmOpacity * opacity) * factor;
 }

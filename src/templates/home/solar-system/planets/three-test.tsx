@@ -76,6 +76,7 @@ function ThreePlanetsSun({ store, onUpdate, ...props }: ThreePlanetsProps) {
           {...glowMatRef.current}
           side={BackSide}
           transparent
+          // blending={NormalBlending}
           // depthWrite={false}
         />
       </mesh>
