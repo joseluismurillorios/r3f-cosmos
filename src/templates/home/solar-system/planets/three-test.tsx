@@ -54,7 +54,7 @@ function ThreePlanetsSun({ store, onUpdate, ...props }: ThreePlanetsProps) {
   useFrame((state) => {
     const t = state.clock.elapsedTime;
     // group.current.rotation.y += 0.0004;
-    sunMatRef.current.uniforms.time.value = t;
+    onChange('time', t * 0.5);
   });
 
   return (
@@ -70,7 +70,7 @@ function ThreePlanetsSun({ store, onUpdate, ...props }: ThreePlanetsProps) {
         />
       </mesh>
       <mesh>
-        <sphereGeometry args={[1.3, 36, 36]} />
+        <sphereGeometry args={[1.25, 36, 36]} />
         <shaderMaterial
           attach="material"
           {...glowMatRef.current}
