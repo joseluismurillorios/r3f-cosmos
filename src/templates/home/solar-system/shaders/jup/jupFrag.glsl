@@ -74,7 +74,7 @@ void main() {
 	// vec3 color = vec3(1., 0., 0.);
 	// gl_FragColor = vec4(0.5 + 0.2 * sin(vUv.y + time) + color, 1.0);
   
-	vec2 uv = rotate(vUv, PI/2.);
+	vec2 uv = rotate(vUv, 0.);
 	vec3 sphereColor = vec3(0, 0, 0);
 	// sphereColor = vec3(makeCheker(vUv));
 	sphereColor = vec3(makeJupiter(uv));
