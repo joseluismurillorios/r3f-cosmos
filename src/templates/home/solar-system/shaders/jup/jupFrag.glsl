@@ -1,5 +1,4 @@
 uniform float time;
-// uniform vec3 color;
 varying vec2 vUv;
 
 float iteration = 10.;

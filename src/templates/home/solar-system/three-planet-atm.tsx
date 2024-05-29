@@ -9,13 +9,14 @@ import planetFrag from './shaders/planetFrag.glsl';
 import { throttle } from '@/helpers/helper-util';
 
 const sphereGeo = new THREE.SphereGeometry(1, 32, 32);
+const defColor = new THREE.Color('#555');
 
 type ThreePlanetsProps = {
   color?: THREE.ColorRepresentation;
   store: StoreType;
 } & ThreeElements['group'];
 
-function ThreePlanetsAtm({ color = '#555', store, ...props }: ThreePlanetsProps) {
+function ThreePlanetsAtm({ color = defColor, store, ...props }: ThreePlanetsProps) {
   const matRef = useRef<any>();
   const { gl, scene, camera } = useThree();
   const unis = useRef<any>({
