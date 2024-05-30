@@ -1,11 +1,13 @@
 uniform float time;
 varying vec2 vUv;
 
-float iteration = 10.;
-float timeScale = 1.;
-vec2 zoom = vec2(25.,5.5);
+uniform float iteration; // { "value": 10, "min":0, "max":20, "step":0.001 }
+uniform float timeScale; // { "value": 1, "min":0, "max":2, "step":0.001 }
+// float timeScale = 1.;
 vec2 offset = vec2(0.,2.);
-float PI = 3.141592653589793238;
+// float PI = 3.141592653589793238;
+// float PI8 = 25.132741228718345;
+vec2 zoom = vec2(25.132741228718345,5.5);
 
 float makeCheker(vec2 p)
 {
