@@ -7,7 +7,6 @@ import { useLocationProperty, navigate } from 'wouter/use-location';
 import { Color } from 'three';
 import { folder, useControls } from 'leva';
 import { StoreType } from 'leva/dist/declarations/src/types';
-import { useHref } from 'react-router-dom';
 
 import ThreePlanetsMoon from '@/templates/home/solar-system/planets/three-moon';
 import { solarSystemPlanets } from '@/templates/home/solar-system';
@@ -34,12 +33,10 @@ export const useHashLocation = () => {
 
 export default function Planets({ transition, store, animate }: PlanetsProps) {
   const postRef = useRef<any>();
-  const href = useHref(`../${base}`);
   // const store = useRef(useCreateStore()).current;
   const [postActive, setPostActive] = useState(true);
   const animateRef = useRef(animate);
   const { gl, scene, camera } = useThree();
-  console.log('href', href);
 
   const renderTargetNode = () => {
     if (!animateRef.current) {
@@ -95,7 +92,7 @@ export default function Planets({ transition, store, animate }: PlanetsProps) {
       {transition(({ opacity, ...props }, location) => (
         <a.group {...props}>
           <Switch location={location}>
-            <Route path={href}>
+            <Route path="/">
               <ThreePlanetsAtm store={store} color={mainColor} />
               <ThreePlanetsMoon />
             </Route>
