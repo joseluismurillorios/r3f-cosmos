@@ -30,6 +30,17 @@ function getThumbsPerPage() {
   );
 }
 
+// function ActiveLink(props: { href: string; children: ReactNode; className: string }) {
+//   const [isActive] = useRoute(props.href);
+//   return (
+//     <Link {...props}>
+//       <a href={props.href} className={`${props.className} ${isActive ? 'active' : ''}`}>
+//         {props.children}
+//       </a>
+//     </Link>
+//   );
+// }
+
 function PlanetsNav() {
   const [visible, setVisible] = useState(false);
   const [page, setPage] = useState(0);
