@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useRef, useState } from 'react';
+import { ReactNode, useEffect, useMemo, useRef, useState } from 'react';
 import gsap from 'gsap';
 
 import './style.scss';
@@ -13,13 +13,12 @@ type ConfigPanelProps = {
 function ConfigPanel({ children }: ConfigPanelProps) {
   const [reversed, setReversed] = useState(isDev);
   const el = useRef<HTMLDivElement>(null);
-  const q = gsap.utils.selector(el);
+  const q = useMemo(() => gsap.utils.selector(el), [el]);
 
   // store the timeline in a ref.
   const tl = useRef<ReturnType<typeof gsap.timeline> | null>();
 
   useEffect(() => {
-    // add a box and circle animation to our timeline and play on first render
     if (tl.current) {
       tl.current.progress(0).kill();
     }
@@ -27,7 +26,7 @@ function ConfigPanel({ children }: ConfigPanelProps) {
       x: -280,
       opacity: 0,
     });
-  }, []);
+  }, [q]);
 
   useEffect(() => {
     // toggle the direction of our timeline

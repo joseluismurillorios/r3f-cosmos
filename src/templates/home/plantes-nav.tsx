@@ -1,7 +1,6 @@
-/* eslint-disable no-underscore-dangle */
 import { a } from '@react-spring/web';
 import { NavLink } from 'react-router-dom';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Github } from 'lucide-react';
 import { Canvas } from '@react-three/fiber';
 import { Color } from 'three';
 
@@ -10,11 +9,9 @@ import ModalPicker from '@/components/atoms/modal-picker';
 import { throttle } from '@/helpers/helper-util';
 import { solarSystemPlanets } from '@/templates/home/solar-system';
 import PlanetsThumb from './planets-thumb';
-// import MaterialsKeys from './playground-sketches/materialsKeys';
 
 // TODO: use aspect ratio
 
-// const materialsKeys = Object.keys(MaterialsKeys) as Array<keyof typeof MaterialsKeys>;
 const color = new Color('#121212');
 
 const THUMBS_PER_PAGE = 3;
@@ -58,7 +55,7 @@ function PlanetsNav() {
     return () => {
       window.removeEventListener('resize', delayedResize);
     };
-  }, []);
+  }, [delayedResize]);
 
   return (
     <>
@@ -67,6 +64,16 @@ function PlanetsNav() {
           <button type="button" className="dot" onClick={() => setVisible(!visible)}>
             nav
           </button>
+        </li>
+        <li>
+          <a
+            href="https://github.com/josemurillodev/r3f-cosmos"
+            className="icon"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            <Github size={16} />
+          </a>
         </li>
       </ul>
       <ModalPicker
@@ -81,12 +88,7 @@ function PlanetsNav() {
           </button>
           <a.div className="app__three--vis-thumbs">
             {thumbs.map(({ id, name, thumb }) => (
-              <NavLink
-                key={id}
-                to={`#/${id}`}
-                className="app__three--vis-thumb"
-                // onClick={() => setVisible(false)}
-              >
+              <NavLink key={id} to={`#/${id}`} className="app__three--vis-thumb">
                 <Canvas linear>
                   <Suspense fallback={null}>
                     <color attach="background" args={[color]} />
@@ -98,51 +100,6 @@ function PlanetsNav() {
               </NavLink>
             ))}
           </a.div>
-          {/* <div className="app__three--vis-thumbs">
-            <a.div
-              style={{
-                // position: 'absolute',
-                // left: 0,
-                // bottom: 0,
-                padding: 20,
-                width: '100%',
-              }}
-            >
-              {thumbs.map(({ id, name }) => (
-                <NavLink key={id} to={`./${id}`} className="app__three--vis-thumb">
-                  <Canvas flat>
-                    <Suspense fallback={null}>
-                      <color attach="background" args={[color]} />
-                      <hemisphereLight intensity={1.5} />
-                      <group scale={2.5}>
-                        <mesh ref={sphereRef}>
-                          <sphereGeometry args={[3, 36, 36]} />
-                          <meshPhysicalMaterial
-                            // map={base}
-                            // metalnessMap={metalness}
-                            // bumpMap={bump}
-                            // aoMap={ao}
-                            // normalMap={normal}
-                            // roughnessMap={rough}
-                            color="#f00"
-                          />
-                        </mesh>
-                      </group>
-                    </Suspense>
-                  </Canvas>
-                  <span>{name}</span>
-                </NavLink>
-                // <NavLink
-                //   key={id}
-                //   to={`./${id}`}
-                //   style={{ marginLeft: 4, display: 'inline-block' }}
-                //   onClick={() => setVisible(false)}
-                // >
-                //   {name}
-                // </NavLink>
-              ))}
-            </a.div>
-          </div> */}
           <button onClick={onNext} type="button" className="app__three--vis-next">
             <ChevronRight size={16} />
           </button>

@@ -16,20 +16,24 @@
       position: relative;
       appearance: none;
 
-      button, .dot {
+      .icon, .dot {
         width: 32px;
         height: 32px;
-        text-indent: -9999px;
-        line-height: 32px;
         cursor: pointer;
         position: relative;
         background: none;
         border: 1px solid transparent;
         display: flex;
-        color: transparent;
         background-color: rgba(black, 0.4);
         appearance: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
 
+      .dot {
+        color: transparent;
+        // text-indent: -9999px;
         &:before {
           content: "";
           position: absolute;
