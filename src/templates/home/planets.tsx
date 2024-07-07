@@ -20,7 +20,7 @@ interface PlanetsProps {
   animate?: boolean;
 }
 
-const base = import.meta.env.BASE_URL.replaceAll('/', '');
+// const base = import.meta.env.BASE_URL.replaceAll('/', '');
 
 const hashLocation = () => window.location.hash.replace(/^#/, '') || '/';
 

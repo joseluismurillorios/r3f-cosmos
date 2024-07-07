@@ -23,7 +23,6 @@ function Loader({ progress }: { progress: number }) {
 export default function App() {
   // Current route
   const [location] = useHashLocation();
-  console.log('location', location);
   const store = useRef(useCreateStore()).current;
   const transition = useTransition(location, {
     from: {
