@@ -2,7 +2,6 @@ import { Suspense, useRef } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Html, useProgress } from '@react-three/drei';
 import { useTransition } from '@react-spring/core';
-import { useLocation } from 'wouter';
 import { LinearEncoding, LinearToneMapping } from 'three';
 import { useControls, useCreateStore } from 'leva';
 
@@ -11,7 +10,7 @@ import { CameraOrbitControls } from '@/fibers/controls/orbit-controls';
 import Configs from '@/components/organisms/configs';
 
 import './style.scss';
-import Planets from './planets';
+import Planets, { useHashLocation } from './planets';
 
 function Loader({ progress }: { progress: number }) {
   return (
@@ -23,7 +22,8 @@ function Loader({ progress }: { progress: number }) {
 
 export default function App() {
   // Current route
-  const [location] = useLocation();
+  const [location] = useHashLocation();
+  console.log('location', location);
   const store = useRef(useCreateStore()).current;
   const transition = useTransition(location, {
     from: {

@@ -2,7 +2,8 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { useThree } from '@react-three/fiber';
 import { TransitionFn } from '@react-spring/core';
 import { a } from '@react-spring/three';
-import { Switch, Route } from 'wouter';
+import { Switch, Route, Router } from 'wouter';
+import { useLocationProperty, navigate } from 'wouter/use-location';
 import { Color } from 'three';
 import { folder, useControls } from 'leva';
 import { StoreType } from 'leva/dist/declarations/src/types';
@@ -22,6 +23,15 @@ interface PlanetsProps {
 
 const base = import.meta.env.BASE_URL.replaceAll('/', '');
 
+const hashLocation = () => window.location.hash.replace(/^#/, '') || '/';
+
+const hashNavigate = (to: string) => navigate(`#${to}`);
+
+export const useHashLocation = () => {
+  const location = useLocationProperty(hashLocation);
+  return [location, hashNavigate] as [string, (to: string) => void];
+};
+
 export default function Planets({ transition, store, animate }: PlanetsProps) {
   const postRef = useRef<any>();
   const href = useHref(`../${base}`);
@@ -29,6 +39,7 @@ export default function Planets({ transition, store, animate }: PlanetsProps) {
   const [postActive, setPostActive] = useState(true);
   const animateRef = useRef(animate);
   const { gl, scene, camera } = useThree();
+  console.log('href', href);
 
   const renderTargetNode = () => {
     if (!animateRef.current) {
@@ -79,7 +90,7 @@ export default function Planets({ transition, store, animate }: PlanetsProps) {
   }, []);
 
   return (
-    <>
+    <Router hook={useHashLocation}>
       <color attach="background" args={[mainColor.getHex()]} />
       {transition(({ opacity, ...props }, location) => (
         <a.group {...props}>
@@ -89,7 +100,7 @@ export default function Planets({ transition, store, animate }: PlanetsProps) {
               <ThreePlanetsMoon />
             </Route>
             {solarSystemPlanets.map(({ id, Planet, atmosphere }) => (
-              <Route key={id} path={`${href}/${id}`}>
+              <Route key={id} path={`/${id}`}>
                 {atmosphere && <ThreePlanetsAtm store={store} color={mainColor} />}
                 <Planet store={store} onUpdate={delayedRender} />
               </Route>
@@ -104,6 +115,6 @@ export default function Planets({ transition, store, animate }: PlanetsProps) {
           />
         </a.group>
       ))}
-    </>
+    </Router>
   );
 }

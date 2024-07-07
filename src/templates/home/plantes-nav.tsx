@@ -83,7 +83,7 @@ function PlanetsNav() {
             {thumbs.map(({ id, name, thumb }) => (
               <NavLink
                 key={id}
-                to={`./${id}`}
+                to={`#/${id}`}
                 className="app__three--vis-thumb"
                 // onClick={() => setVisible(false)}
               >
